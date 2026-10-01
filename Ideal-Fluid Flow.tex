@@ -1,0 +1,91 @@
+\documentclass[17pt,a4paper,twoside]{extbook}
+\include{macros}
+
+\setlength{\headheight}{63.0pt}
+
+
+
+
+\title{%
+Ideal-Fluid Flow}
+
+\author{Prof. Tzuyin Wu}
+\date{Jan 26, 2024}
+
+\begin{document}
+
+\frontmatter
+
+\maketitle
+
+
+\pagenumbering{Roman}
+%\pagestyle{empty}
+%\pagenumbering{gobble}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[C]{\textbf{\leftmark}}
+\fancyfoot[C,CO]{\thepage}
+\tableofcontents
+
+%\listoffigures
+
+%\newpage
+%\pagestyle{empty}
+
+\newpage
+\mainmatter
+\pagenumbering{arabic}
+\pagestyle{fancy}
+%\setcounter{page}{1}
+\fancyhf{}
+\fancyhead[CO]{\textbf{\leftmark}}
+\fancyhead[CE]{\textbf{\rightmark}}
+%\fancyhead[C]{\textbf{\leftmark}}
+%\fancyhead[C]{\textbf{\rightmark}}
+\fancyfoot[C,CO]{\thepage}
+\fancyfoot[L,L]{\footnotesize Prof. Tzuyin Wu}
+\renewcommand{\footrulewidth}{1pt}
+
+\raggedright
+
+
+
+
+\input{chapter/part_Chapters/Chapter1_Introduction.tex}
+\input{chapter/part_Chapters/Chapter2_Equations for the Motion of an Ideal-Fluid.tex}
+\input{chapter/part_Chapters/Chapter3_Kinematic and Dynamics of Ideal-Fluid Motion.tex}
+\input{chapter/part_Chapters/Chapter4_General Properties of Irrotational Motion in an Ideal Fluid (Potential Flows).tex}
+\input{chapter/part_Chapters/Chapter5_Two-Dimensional Potential Flows.tex}
+\input{chapter/part_Chapters/Chapter6_Elements of Thin-Airfoil Theory (Linearized 2D Potential Flow).tex}
+\input{chapter/part_Chapters/Chapter7_Three-Dimensional Potential Flows.tex}
+
+%
+%
+%
+%\cleardoublepage
+%\begin{appendices}
+%\phantomsection
+%\addcontentsline{toc}{chapter}{Appendices}
+%\appendix
+%
+%
+%\appendixpage
+%\noappendicestocpagenum
+%
+%\input{chapter/part_Appedices/Some definitions concerning curves, surfaces, and regions.tex}
+%\end{appendices}
+
+
+\phantomsection
+\addcontentsline{toc}{chapter}{Bibliography}
+\bibliographystyle{plain}
+\bibliography{chapter/reference}
+
+
+
+\nocite{*}
+
+
+
+\end{document}

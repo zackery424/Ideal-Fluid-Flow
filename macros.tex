@@ -1,0 +1,226 @@
+
+
+
+
+\usepackage[left=1in,right=1in]{geometry}
+\usepackage{float}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{pifont}
+\usepackage{commath}
+\usepackage{mathtools}
+\usepackage[scr]{rsfso}
+\usepackage[makeroom]{cancel}
+\usepackage{bm}
+\usepackage{fancybox,framed}
+\usepackage{stackengine}
+\usepackage{amssymb,amsmath}
+\usepackage{amsthm}
+%\usepackage{unicode-math}
+\usepackage{esint}
+%\usepackage{pxfonts}
+\usepackage[overload]{empheq}
+\usepackage{cases} 
+\usepackage{accents} 
+\usepackage[symbol]{footmisc}
+\usepackage{cancel}
+\usepackage{wrapfig}
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage{xcolor}
+\graphicspath{ {figures/} }
+\usepackage[titletoc]{appendix}
+\usepackage{tikz}
+\usetikzlibrary{patterns,patterns.meta}
+\usetikzlibrary {arrows.meta}
+\usetikzlibrary{angles,quotes, calc}
+\usetikzlibrary{decorations.pathreplacing,decorations.markings}
+\usetikzlibrary {shapes.geometric}
+\usepackage{tikz-3dplot}
+\usepackage{pgfplots}
+\pgfplotsset{width=10cm,compat=1.9}
+
+\pgfdeclarepattern{
+  name=hatch,
+  parameters={\hatchsize,\hatchangle,\hatchlinewidth},
+  bottom left={\pgfpoint{-.1pt}{-.1pt}},
+  top right={\pgfpoint{\hatchsize+.1pt}{\hatchsize+.1pt}},
+  tile size={\pgfpoint{\hatchsize}{\hatchsize}},
+  tile transformation={\pgftransformrotate{\hatchangle}},
+  code={
+    \pgfsetlinewidth{\hatchlinewidth}
+    \pgfpathmoveto{\pgfpoint{-.1pt}{-.1pt}}
+    \pgfpathlineto{\pgfpoint{\hatchsize+.1pt}{\hatchsize+.1pt}}
+    \pgfpathmoveto{\pgfpoint{-.1pt}{\hatchsize+.1pt}}
+    \pgfpathlineto{\pgfpoint{\hatchsize+.1pt}{-.1pt}}
+    \pgfusepath{stroke}
+  }
+}
+
+\tikzset{
+  hatch size/.store in=\hatchsize,
+  hatch angle/.store in=\hatchangle,
+  hatch line width/.store in=\hatchlinewidth,
+  hatch size=5pt,
+  hatch angle=0pt,
+  hatch line width=.5pt,
+}
+
+\tikzset{
+    tangent/.style={
+        decoration={
+            markings,% switch on markings
+            mark=
+                at position #1
+                with
+                {
+                    \coordinate (tangent point-\pgfkeysvalueof{/pgf/decoration/mark info/sequence number}) at (0pt,0pt);
+                    \coordinate (tangent unit vector-\pgfkeysvalueof{/pgf/decoration/mark info/sequence number}) at (1,0pt);
+                    \coordinate (tangent orthogonal unit vector-\pgfkeysvalueof{/pgf/decoration/mark info/sequence number}) at (0pt,1);
+                }
+        },
+        postaction=decorate
+    },
+    use tangent/.style={
+        shift=(tangent point-#1),
+        x=(tangent unit vector-#1),
+        y=(tangent orthogonal unit vector-#1)
+    },
+    use tangent/.default=1
+}
+\tikzset{->-/.style={decoration={
+  markings,
+  mark=at position #1 with {\arrow{Stealth}}},postaction={decorate}}}
+
+
+\tikzset{
+    partial ellipse/.style args={#1:#2:#3}{
+        insert path={+ (#1:#3) arc (#1:#2:#3)}
+    }
+}
+
+
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+\usepackage{pdfpages}
+
+\newcommand{\q}[1]{``#1''}
+
+
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+
+
+
+
+
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem*{example}{Example}
+\newtheorem*{exercise}{Exercise}
+\newtheorem*{solution}{Solution}
+\newtheorem*{notation}{Notation}
+\newtheorem*{note}{Note}
+\newtheorem*{remark}{Remark}
+\newtheorem*{discussion}{Discussion}
+\newtheorem*{conclusion}{Conclusion}
+%\newtheorem*{claimproof}{Proof of claim \theclaim}
+%\newtheorem*{theoremproof}{Proof of theorem \thetheorem}
+
+
+
+
+
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{claim}{Claim}[section]
+\newtheorem{axiom}{Axiom}[section]
+
+
+
+%\usepackage[thmmarks]{ntheorem}
+
+
+%\theorembodyfont{\normalfont}
+%\newtheorem{definition}{Definition}[section]
+%\theoremstyle{plain}
+%\theorembodyfont{\normalfont}
+%\newtheorem{example}{Example}
+%\theoremstyle{nonumberplain}
+%\newtheorem{notation}{Notation}
+%
+%\theorembodyfont{\itshape}
+%\theoremstyle{plain}
+%\newtheorem{theorem}{Theorem}
+%\newtheorem{lemma}[theorem]{Lemma}
+%
+%\newtheorem{claim}{Claim}[theorem]
+%\theoremstyle{nonumberplain}
+%\theoremsymbol{\ensuremath{\Box}}
+%\newtheorem{proof}{Proof}
+%\theoremsymbol{\ensuremath{\blacksquare}} 
+%\newtheorem{claimproof}{Proof of claim \theclaim}
+
+% argumented matrix
+\makeatletter
+\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
+  \hskip -\arraycolsep
+  \let\@ifnextchar\new@ifnextchar
+  \array{#1}}
+\makeatother
+%
+
+% volume
+\makeatletter
+\DeclareRobustCommand{\volume}{\text{\volumedash}V}
+\newcommand{\volumedash}{%
+  \makebox[0pt][l]{%
+    \ooalign{\hfil\hphantom{$\m@th V$}\hfil\cr\kern0.08em--\hfil\cr}%
+  }%
+}
+%
+\makeatother
+
+
+
+
+
+\usepackage{hyperref}
+\hypersetup{hidelinks,
+	colorlinks=true,
+	allcolors=black,
+	pdfstartview=Fit,
+	breaklinks=true
+}
+
+%------------Command----------------------------------------
+
+\newcommand{\vc}[3]{\overset{#2}{\underset{#3}{#1}}}
+
+%--------------tensor form---------------------
+\stackMath
+\newcommand\tenq[2][1]{%
+ \def\useanchorwidth{T}%
+  \ifnum#1>1%
+    \stackunder[0pt]{\tenq[\numexpr#1-1\relax]{#2}}{\scriptscriptstyle\sim}%
+  \else%
+    \stackunder[1pt]{#2}{\scriptscriptstyle\sim}%
+  \fi%
+}
+
+%-----------------------------------------
+
+\DeclareMathOperator\erf{erf}
+\DeclareMathOperator\erfc{erfc}
+
+\DeclareMathOperator\Arg{Arg}
+\DeclareMathOperator\Log{Log}
+
+\DeclareMathOperator\arcsec{arcsec}
+\DeclareMathOperator\arccot{arccot}
+\DeclareMathOperator\arccsc{arccsc}
+\DeclareMathOperator\tr{tr}
+
+\def\Res{\mathop{\text{Res}}\limits}
